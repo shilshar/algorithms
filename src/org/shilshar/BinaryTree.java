@@ -1,4 +1,4 @@
-package org.practice;
+package org.shilshar;
 
 public class BinaryTree {
     
@@ -13,12 +13,13 @@ public class BinaryTree {
     }
     
     Node root;
-    
+
     public void insert(int value){
-        root = insertRec(root, value);
+        insertIter(root, value);
+        //root = insertRec(root, value);
     }
     
-    private Node insertRec(Node node, int value){
+    private Node insertRec(Node node, int value) {
         if (node == null)
             node = new Node(value);
         else if (value < node.value)
@@ -26,6 +27,37 @@ public class BinaryTree {
         else if (value > node.value)
             node.rightChild = insertRec(node.rightChild, value);
         return node;
+    }
+
+    private void insertIter(Node root, int value) {
+        Node newNode = new Node(value);
+        Node parentNode = null;
+        while (root != null) {
+            parentNode = root;
+            if (value < root.value)
+                root = root.leftChild;
+            else if (value > root.value)
+                root = root.rightChild;
+        }
+        if (parentNode == null)
+            this.root = newNode;
+        else if (value > parentNode.value)
+            parentNode.rightChild = newNode;
+        else
+            parentNode.leftChild = newNode;
+    }
+
+    public int getDepth() {
+        return getDepthRec(root, 0);
+    }
+
+    private int getDepthRec(Node node, int depth) {
+        if (node == null)
+            return depth;
+        depth++;
+        int leftChildDepth = getDepthRec(node.leftChild, depth);
+        int rightChildDepth = getDepthRec(node.rightChild, depth);
+        return (leftChildDepth > rightChildDepth) ? leftChildDepth : rightChildDepth;
     }
     
     public boolean checkIfBST(){
@@ -67,6 +99,8 @@ public class BinaryTree {
         myTree.insert(1);
         
         myTree.traverse();
+
+        System.out.println(myTree.getDepth());
         
         System.out.println(myTree.checkIfBST());
     }

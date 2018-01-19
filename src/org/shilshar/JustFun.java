@@ -1,10 +1,6 @@
-package org.practice;
+package org.shilshar;
 
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class JustFun {
 

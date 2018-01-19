@@ -1,4 +1,4 @@
-package org.practice;
+package org.shilshar;
 
 public class Stack<T> {
     

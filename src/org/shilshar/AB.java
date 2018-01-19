@@ -1,4 +1,4 @@
-package org.practice;
+package org.shilshar;
 
 public class AB {
     public String createString(int n, int k){

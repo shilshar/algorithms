@@ -1,4 +1,4 @@
-package org.practice;
+package org.shilshar;
 
 public class StringExamples {
     public static void main (String args[]){
